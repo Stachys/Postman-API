@@ -1,6 +1,6 @@
-﻿namespace Postman_API.Models
+﻿namespace Postman_API.Models.Collections
 {
-    public class CollectionInfo
+    class CollectionInfo
     {
         public string id { get; set; }
         public string name { get; set; }

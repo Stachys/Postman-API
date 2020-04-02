@@ -1,4 +1,6 @@
-﻿namespace Postman_API.Models
+﻿using System.Collections.Generic;
+
+namespace Postman_API.Models.Collections
 {
     class CollectionContentModel
     {
@@ -8,7 +10,7 @@
     class CollectionContent
     {
         public Info info { get; set; }
-        public Item[] item { get; set; }
+        public List<Item> item { get; set; }
     }
 
     class Info
@@ -20,7 +22,7 @@
     class Item
     {
         public string name { get; set; }
-        public Item[] item { get; set; }
+        public List<Item> item { get; set; }
         public Request request { get; set; }
     }
 
@@ -28,7 +30,7 @@
     {
         public string url { get; set; }
         public string method { get; set; }
-        public Header[] header { get; set; }
+        public List<Header> header { get; set; }
         public Body body { get; set; }
     }
 
@@ -43,5 +45,4 @@
         public string mode { get; set; }
         public string raw { get; set; }
     }
-
 }

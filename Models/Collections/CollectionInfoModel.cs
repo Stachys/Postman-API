@@ -1,4 +1,4 @@
-﻿namespace Postman_API.Models
+﻿namespace Postman_API.Models.Collections
 {
     class CollectionInfoModel
     {
