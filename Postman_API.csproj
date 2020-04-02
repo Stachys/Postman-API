@@ -119,6 +119,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants.cs" />
     <Compile Include="Key.cs" />
     <Compile Include="Models\Collections\CollectionContentModel.cs" />
     <Compile Include="Models\Collections\CollectionInfo.cs" />
@@ -130,14 +131,14 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Services\WebClientRequests.cs" />
+    <Compile Include="Steps\Collections\CollectionSteps.cs" />
+    <Compile Include="Steps\Collections\CollectionHooks.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Features\Collections.feature" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Steps\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

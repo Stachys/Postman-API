@@ -45,6 +45,5 @@ namespace Postman_API.Services
             T deserializedResponse = Deserialize<T>(response);
             return deserializedResponse;
         }
-
     }
 }
