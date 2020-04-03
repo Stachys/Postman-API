@@ -11,8 +11,8 @@ namespace Postman_API.Steps.Collections
         [AfterScenario]
         public static void DeleteTestCollections()
         {
-            var collectionListInfo = new CollectionService().GetCollections();
-            IEnumerable<string> uidToDel = collectionListInfo.collections.Where(i => i.name.Contains("vsTest")).Select(i => i.uid);
+            var getAllresponse = new CollectionService().GetAllCollections();
+            IEnumerable<string> uidToDel = getAllresponse.collections.Where(i => i.name.Contains("vsTest")).Select(i => i.uid);
             foreach (string uid in uidToDel)
             {
                 new CollectionService().DeleteCollection(uid);

@@ -7,9 +7,14 @@ namespace Postman_API.Services.Collections
     {
         public CollectionService() : base() { }
 
-        public CollectionListInfoModel GetCollections()
+        public CollectionListInfoModel GetAllCollections()
         {
             return Get<CollectionListInfoModel>(Constants.collectionUri);
+        }
+
+        public CollectionContentModel GetSingleCollection(string uid)
+        {
+            return Get<CollectionContentModel>(Constants.collectionUri + $"/{uid}");
         }
 
         public CollectionInfoModel CreateCollection(CollectionContentModel content)

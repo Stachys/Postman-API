@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using Postman_API.Models.Collections;
 using Postman_API.Services.Collections;
@@ -12,18 +13,28 @@ namespace Postman_API.Steps.Collections
     {
         [Given(@"I have collection with name (.*)")]
         [When(@"I send request to create (.*) collection")]
-        public void IHaveCollectionWithName(string name)
+        public void IHaveCollectionWithName(string collectionName)
         {
-            var contentModel = CreateModel(name);
+            var contentModel = CreateModel(collectionName);
             var postResponse = new CollectionService().CreateCollection(contentModel);
             ScenarioContext.Current["postResponse"] = postResponse;
+        }
+
+        [Given(@"I have collection (.*) which contains (.*) request (.*)")]
+        public void IHaveCollectionWhichContainsRequest (string collectionName, string method, string requestName)
+        {
+            var contentModel = CreateModel(collectionName, method, requestName);
+            var postResponse = new CollectionService().CreateCollection(contentModel);
+            ScenarioContext.Current["postResponse"] = postResponse;
+            ScenarioContext.Current["method"] = method;
+            ScenarioContext.Current["requestName"] = requestName;
         }
 
         [When(@"I send GET request to postman collections api")]
         public void WhenISendGETRequestToPostmanCollectionsApi()
         {
-            var getResponse = new CollectionService().GetCollections();
-            ScenarioContext.Current["getResponse"] = getResponse; 
+            var getAllResponse = new CollectionService().GetAllCollections();
+            ScenarioContext.Current["getAllResponse"] = getAllResponse; 
         }
 
         [When(@"I send request to rename this collection to (.*)")]
@@ -40,39 +51,61 @@ namespace Postman_API.Steps.Collections
             var postResponse = ScenarioContext.Current["postResponse"] as CollectionInfoModel;
             new CollectionService().DeleteCollection(postResponse.collection.uid);
         }
-        
+
+        [When(@"I send GET request to postman collections api with uid of this collection")]
+        public void WhenISendGETRequestToPostmanCollectionsApiWithUidOfThisCollection()
+        {
+            var postResponse = ScenarioContext.Current["postResponse"] as CollectionInfoModel;
+            var getSingleResponse = new CollectionService().GetSingleCollection(postResponse.collection.uid);
+            ScenarioContext.Current["getSingleResponse"] = getSingleResponse;
+        }
+
         [Then(@"I get list of collections with (.*) name in it")]
         public void ThenIGetListOfCollectionsWithNameInIt(string name)
         {
-            var getResponse = ScenarioContext.Current["getResponse"] as CollectionListInfoModel;
-            getResponse.collections.Any(i => i.name.Equals(name)).Should().BeTrue();
+            var getAllResponse = ScenarioContext.Current["getAllResponse"] as CollectionListInfoModel;
+            getAllResponse.collections.Any(i => i.name.Equals(name)).Should().BeTrue();
         }
 
         [Then(@"Created collection appears in postman")]
         public void ThenCreatedCollectionAppearsInPostman()
         {
-            var getResponse = new CollectionService().GetCollections();
+            var getAllResponse = new CollectionService().GetAllCollections();
             var postResponse = ScenarioContext.Current["postResponse"] as CollectionInfoModel;
-            getResponse.collections.Any(i => i.uid.Equals(postResponse.collection.uid)).Should().BeTrue();
+            getAllResponse.collections.Any(i => i.uid.Equals(postResponse.collection.uid)).Should().BeTrue();
         }
 
         [Then(@"Name of collection was updated to (.*)")]
         public void ThenNameOfCollectionWasUpdatedTo(string newName)
         {
-            var getResponse = new CollectionService().GetCollections();
+            var getAllResponse = new CollectionService().GetAllCollections();
             var postResponse = ScenarioContext.Current["postResponse"] as CollectionInfoModel;
-            getResponse.collections.FirstOrDefault(i => i.uid.Equals(postResponse.collection.uid)).name.Should().Equals(newName);
+            getAllResponse.collections.FirstOrDefault(i => i.uid.Equals(postResponse.collection.uid)).name.Should().Equals(newName);
         }
 
         [Then(@"Collection was deleted")]
         public void ThenCollectionWasDeleted()
         {
-            var getResponse = new CollectionService().GetCollections();
+            var getAllResponse = new CollectionService().GetAllCollections();
             var postResponse = ScenarioContext.Current["postResponse"] as CollectionInfoModel;
-            getResponse.collections.All(i => i.uid.Equals(postResponse.collection.uid)).Should().BeFalse();
+            getAllResponse.collections.All(i => i.uid.Equals(postResponse.collection.uid)).Should().BeFalse();
         }
 
-        private CollectionContentModel CreateModel(string CollectionName)
+        [Then(@"I get response with collection content")]
+        public void ThenIGetResponseWithCollectionContent()
+        {
+            var postResponse = ScenarioContext.Current["postResponse"] as CollectionInfoModel;
+            var getSingleResponse = ScenarioContext.Current["getSingleResponse"] as CollectionContentModel;
+            var requestName = ScenarioContext.Current["requestName"];
+            var method = ScenarioContext.Current["method"];
+
+            getSingleResponse.collection.info._postman_id.Equals(postResponse.collection.id).Should().BeTrue();
+            getSingleResponse.collection.info.name.Equals(postResponse.collection.name).Should().BeTrue();
+            getSingleResponse.collection.item.First().name.Equals(requestName).Should().BeTrue();
+            getSingleResponse.collection.item.First().request.method.Equals(method).Should().BeTrue();
+        }
+
+        private CollectionContentModel CreateModel(string collectionName, string method = "GET", string requestName = "Test")
         {
             var header = new List<Header>
             {
@@ -80,10 +113,26 @@ namespace Postman_API.Steps.Collections
                 new Header { key = "Content-Type", value = "application/json" }
             };
 
+            var url = new Url
+            {
+                raw = Constants.collectionUri,
+                protocol = "https",
+                host = new List<string>
+                {
+                    "api",
+                    "getpostman",
+                    "com"
+                },
+                path = new List<string>
+                {
+                    "collections"
+                }
+            };
+
             var request = new Request
             {
-                url = Constants.collectionUri,
-                method = "GET",
+                url = url,
+                method = method,
                 header = header
             };
 
@@ -91,14 +140,15 @@ namespace Postman_API.Steps.Collections
             {
                 new Item
                 {
-                    name = CollectionName + "request",
+                    name = requestName,
                     request = request
                 }
             };
 
             var info = new Info
             {
-                name = CollectionName,
+                _postman_id = Guid.NewGuid().ToString(),
+                name = collectionName,
                 schema = Constants.CollectionSchema
             };
 

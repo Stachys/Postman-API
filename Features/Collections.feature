@@ -21,3 +21,8 @@ Scenario: 04 Collection should be deleted after DELETE request to postman collec
 	Given I have collection with name vsTest
 	When I send request to delete this collection
 	Then Collection was deleted
+
+Scenario: 05 Response with collection content should be returned after GET request to specified collection
+	Given I have collection vsTest which contains Post request Single Test
+	When I send GET request to postman collections api with uid of this collection 
+	Then I get response with collection content
