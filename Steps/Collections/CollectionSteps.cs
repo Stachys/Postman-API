@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using Postman_API.Models.Collections;
-using Postman_API.Services.Collections;
+using Postman_API.Services;
 using FluentAssertions;
 using TechTalk.SpecFlow;
 
@@ -115,7 +115,7 @@ namespace Postman_API.Steps.Collections
 
             var url = new Url
             {
-                raw = Constants.collectionUri,
+                raw = Constants.baseUri,
                 protocol = "https",
                 host = new List<string>
                 {

@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
-using Postman_API.Services.Collections;
+using Postman_API.Services;
 using TechTalk.SpecFlow;
 
 namespace Postman_API.Steps.Collections

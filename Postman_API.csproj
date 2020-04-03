@@ -125,12 +125,20 @@
     <Compile Include="Models\Collections\CollectionInfo.cs" />
     <Compile Include="Models\Collections\CollectionListInfoModel.cs" />
     <Compile Include="Models\Collections\CollectionInfoModel.cs" />
+    <Compile Include="Models\Environments\EnvironmentInfo.cs" />
+    <Compile Include="Models\Environments\EnvironmentInfoModel.cs" />
+    <Compile Include="Models\Environments\EnvironmentListInfoModel.cs" />
+    <Compile Include="Models\Workspaces\WorkspaceContentModel.cs" />
+    <Compile Include="Models\Workspaces\WorkspaceInfo.cs" />
+    <Compile Include="Models\Workspaces\WorkspaceInfoModel.cs" />
+    <Compile Include="Models\Workspaces\WorkspaceListInfoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\Collections\CollectionService.cs" />
+    <Compile Include="Services\CollectionService.cs" />
     <Compile Include="Services\MyWebClient.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Services\WebClientRequests.cs" />
+    <Compile Include="Services\WorkspaceService.cs" />
     <Compile Include="Steps\Collections\CollectionSteps.cs" />
     <Compile Include="Steps\Collections\CollectionHooks.cs" />
   </ItemGroup>
