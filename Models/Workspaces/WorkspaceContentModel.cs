@@ -15,8 +15,8 @@ namespace Postman_API.Models.Workspaces
         public string name { get; set; }
         public string type { get; set; }
         public string description { get; set; }
-        public List<CollectionListInfoModel> collections { get; set; }
-        public List<EnvironmentListInfoModel> environments { get; set; }
+        public List<CollectionInfo> collections { get; set; }
+        public List<EnvironmentInfo> environments { get; set; }
         public List<Mock> mocks { get; set; }
         public List<Monitor> monitors { get; set; }
     }

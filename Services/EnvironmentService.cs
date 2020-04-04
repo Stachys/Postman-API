@@ -7,29 +7,29 @@ namespace Postman_API.Services
     {
         public EnvironmentService() : base() { }
 
-        public EnvironmentListInfoModel GetAllCollections()
+        public EnvironmentListInfoModel GetAllEnvironments()
         {
             return Get<EnvironmentListInfoModel>(Constants.baseUri + "/environments");
         }
 
-        public EnvironmentContentModel GetSingleCollection(string uid)
+        public EnvironmentContentModel GetSingleEnvironment(string uid)
         {
             return Get<EnvironmentContentModel>(Constants.baseUri + "/environments" + $"/{uid}");
         }
 
-        public EnvironmentInfoModel CreateCollection(EnvironmentContentModel content)
+        public EnvironmentInfoModel CreateEnvironment(EnvironmentContentModel content)
         {
             var serializedContend = JsonConvert.SerializeObject(content);
             return Post<EnvironmentInfoModel>(Constants.baseUri + "/environments", serializedContend);
         }
 
-        public EnvironmentInfoModel UpdateCollection(EnvironmentContentModel content, string uid)
+        public EnvironmentInfoModel UpdateEnvironment(EnvironmentContentModel content, string uid)
         {
             var serializedContend = JsonConvert.SerializeObject(content);
             return Put<EnvironmentInfoModel>(Constants.baseUri + "/environments" + $"/{uid}", serializedContend);
         }
 
-        public EnvironmentInfoModel DeleteCollection(string uid)
+        public EnvironmentInfoModel DeleteEnvironment(string uid)
         {
             return Delete<EnvironmentInfoModel>(Constants.baseUri + "/environments" + $"/{uid}");
         }
