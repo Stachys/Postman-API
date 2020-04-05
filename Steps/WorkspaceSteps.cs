@@ -22,14 +22,17 @@ namespace Postman_API.Steps
             ScenarioContext.Current["wsPostResponse"] = postResponse;
         }
 
-        [Given(@"I have workspace (.*) which contains this collection")]
+        [Given(@"I have workspace (.*) which contains this entities")]
         public void IHaveWorkspaceWhichContainsRequest(string workspaceName)
         {
             var clPostResponse = ScenarioContext.Current["clPostResponse"] as CollectionInfoModel;
+            var envPostResponse = ScenarioContext.Current["envPostResponse"] as EnvironmentInfoModel;
             var collectionList = new List<CollectionInfo> { clPostResponse.collection };
-            var contentModel = CreateModel(workspaceName, collectionList:collectionList);
+            var environmentList = new List<EnvironmentInfo> { envPostResponse.environment };
+            var contentModel = CreateModel(workspaceName, collectionList:collectionList, environmentList:environmentList);
             var postResponse = new WorkspaceService().CreateWorkspace(contentModel);
             ScenarioContext.Current["collectionList"] = collectionList;
+            ScenarioContext.Current["environmentList"] = environmentList;
             ScenarioContext.Current["wsPostResponse"] = postResponse;
         }
 
@@ -99,10 +102,13 @@ namespace Postman_API.Steps
         {
             var postResponse = ScenarioContext.Current["wsPostResponse"] as WorkspaceInfoModel;
             var collectionList = ScenarioContext.Current["collectionList"] as List<CollectionInfo>;
+            var environmentList = ScenarioContext.Current["environmentList"] as List<EnvironmentInfo>;
             var getSingleResponse = ScenarioContext.Current["wsGetSingleResponse"] as WorkspaceContentModel;
 
+            getSingleResponse.workspace.id.Equals(postResponse.workspace.id).Should().BeTrue();
             getSingleResponse.workspace.name.Equals(postResponse.workspace.name).Should().BeTrue();
             getSingleResponse.workspace.collections.Select(i => i.uid).SequenceEqual(collectionList.Select(i => i.uid)).Should().BeTrue();
+            getSingleResponse.workspace.environments.Select(i => i.uid).SequenceEqual(environmentList.Select(i => i.uid)).Should().BeTrue();
         }
 
         private WorkspaceContentModel CreateModel(string workspaceName = null, string id = null, string type = null, string description = null,

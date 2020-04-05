@@ -20,22 +20,22 @@ namespace Postman_API.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.1.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Workspaces")]
-    public partial class WorkspacesFeature
+    [NUnit.Framework.DescriptionAttribute("Environments")]
+    public partial class EnvironmentsFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "Workspaces.feature"
+#line 1 "Environments.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Workspaces", "\tIn order to avoid silly mistakes\r\n\tAs a math idiot\r\n\tI want to be told the sum o" +
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Environments", "\tIn order to avoid silly mistakes\r\n\tAs a math idiot\r\n\tI want to be told the sum o" +
                     "f two numbers", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
@@ -75,13 +75,13 @@ namespace Postman_API.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("01 List of workspace should be returned after GET request to postman workspaces a" +
-            "pi")]
-        public virtual void _01ListOfWorkspaceShouldBeReturnedAfterGETRequestToPostmanWorkspacesApi()
+        [NUnit.Framework.DescriptionAttribute("01 List of environments should be returned after GET request to postman environme" +
+            "nts api")]
+        public virtual void _01ListOfEnvironmentsShouldBeReturnedAfterGETRequestToPostmanEnvironmentsApi()
         {
             string[] tagsOfScenario = ((string[])(null));
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("01 List of workspace should be returned after GET request to postman workspaces a" +
-                    "pi", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("01 List of environments should be returned after GET request to postman environme" +
+                    "nts api", null, ((string[])(null)));
 #line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -103,24 +103,26 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 7
- testRunner.Given("I have workspace with name vsTest", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I have environment with name vsTest", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 8
- testRunner.When("I send GET request to postman workspaces api", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I send GET request to postman environments api", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
- testRunner.Then("I get list of workspaces with vsTest name in it", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I get list of environments with vsTest name in it", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("02 New workspace should be created after POST request to postman workspaces api")]
-        public virtual void _02NewWorkspaceShouldBeCreatedAfterPOSTRequestToPostmanWorkspacesApi()
+        [NUnit.Framework.DescriptionAttribute("02 New environment should be created after POST request to postman environments a" +
+            "pi")]
+        public virtual void _02NewEnvironmentShouldBeCreatedAfterPOSTRequestToPostmanEnvironmentsApi()
         {
             string[] tagsOfScenario = ((string[])(null));
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("02 New workspace should be created after POST request to postman workspaces api", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("02 New environment should be created after POST request to postman environments a" +
+                    "pi", null, ((string[])(null)));
 #line 11
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -142,21 +144,21 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 12
- testRunner.When("I send request to create vsTest workspace", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I send request to create vsTest environment", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 13
- testRunner.Then("Created workspace appears in postman", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("Created environment appears in postman", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("03 Workspace should be updated after PUT request to postman wokrspaces api")]
-        public virtual void _03WorkspaceShouldBeUpdatedAfterPUTRequestToPostmanWokrspacesApi()
+        [NUnit.Framework.DescriptionAttribute("03 Environment should be updated after PUT request to postman environments api")]
+        public virtual void _03EnvironmentShouldBeUpdatedAfterPUTRequestToPostmanEnvironmentsApi()
         {
             string[] tagsOfScenario = ((string[])(null));
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("03 Workspace should be updated after PUT request to postman wokrspaces api", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("03 Environment should be updated after PUT request to postman environments api", null, ((string[])(null)));
 #line 15
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -178,24 +180,26 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 16
- testRunner.Given("I have workspace with name vsTest", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I have environment with name vsTest", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 17
- testRunner.When("I send request to rename this workspace to Updated vsTest", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I send request to rename this environment to Updated vsTest", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 18
- testRunner.Then("Name of workspace was updated to Updated vsTest", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("Name of environment was updated to Updated vsTest", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("04 Workspace should be deleted after DELETE request to postman workspaces api")]
-        public virtual void _04WorkspaceShouldBeDeletedAfterDELETERequestToPostmanWorkspacesApi()
+        [NUnit.Framework.DescriptionAttribute("04 Environment should be deleted after DELETE request to postman environments api" +
+            "")]
+        public virtual void _04EnvironmentShouldBeDeletedAfterDELETERequestToPostmanEnvironmentsApi()
         {
             string[] tagsOfScenario = ((string[])(null));
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("04 Workspace should be deleted after DELETE request to postman workspaces api", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("04 Environment should be deleted after DELETE request to postman environments api" +
+                    "", null, ((string[])(null)));
 #line 20
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -217,33 +221,27 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 21
- testRunner.Given("I have workspace with name vsTest", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I have environment with name vsTest", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 22
- testRunner.When("I send request to delete this workspace", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I send request to delete this environment", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 23
- testRunner.Then("Workspace was deleted", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("Environment was deleted", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("05 Response with workspace content should be returned after GET request to specif" +
-            "ied workspace")]
-        [NUnit.Framework.CategoryAttribute("Collection")]
-        [NUnit.Framework.CategoryAttribute("Environment")]
-        public virtual void _05ResponseWithWorkspaceContentShouldBeReturnedAfterGETRequestToSpecifiedWorkspace()
+        [NUnit.Framework.DescriptionAttribute("05 Response with environment content should be returned after GET request to spec" +
+            "ified environment")]
+        public virtual void _05ResponseWithEnvironmentContentShouldBeReturnedAfterGETRequestToSpecifiedEnvironment()
         {
-            string[] tagsOfScenario = new string[] {
-                    "Collection",
-                    "Environment"};
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("05 Response with workspace content should be returned after GET request to specif" +
-                    "ied workspace", null, new string[] {
-                        "Collection",
-                        "Environment"});
-#line 27
+            string[] tagsOfScenario = ((string[])(null));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("05 Response with environment content should be returned after GET request to spec" +
+                    "ified environment", null, ((string[])(null)));
+#line 25
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -263,20 +261,14 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
+#line 26
+ testRunner.Given("I have environment vsTest with variables", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 27
+ testRunner.When("I send GET request to postman environments api with uid of this environment", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
 #line 28
- testRunner.Given("I have collection with name vsTest", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 29
- testRunner.And("I have environment with name vsTest", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 30
- testRunner.And("I have workspace vsTest which contains this entities", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 31
- testRunner.When("I send GET request to postman workspaces api with id of this workspace", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 32
- testRunner.Then("I get response with workspace content", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I get response with environment content", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

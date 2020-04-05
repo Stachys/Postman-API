@@ -32,5 +32,18 @@ namespace Postman_API.Steps
                 new WorkspaceService().DeleteWorkspace(id);
             }
         }
+
+        [AfterScenario]
+        [Scope(Feature = "Environments")]
+        [Scope(Tag = "Environment")]
+        public static void DeleteTestEnvironments()
+        {
+            var getAllresponse = new EnvironmentService().GetAllEnvironments();
+            IEnumerable<string> uidToDel = getAllresponse.environments.Where(i => i.name.Contains("vsTest")).Select(i => i.uid);
+            foreach (string uid in uidToDel)
+            {
+                new EnvironmentService().DeleteEnvironment(uid);
+            }
+        }
     }
 }

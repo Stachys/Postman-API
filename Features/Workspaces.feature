@@ -23,8 +23,10 @@ Scenario: 04 Workspace should be deleted after DELETE request to postman workspa
 	Then Workspace was deleted
 
 @Collection
+@Environment
 Scenario: 05 Response with workspace content should be returned after GET request to specified workspace
 	Given I have collection with name vsTest
-	And I have workspace vsTest which contains this collection
+	And I have environment with name vsTest
+	And I have workspace vsTest which contains this entities
 	When I send GET request to postman workspaces api with id of this workspace 
 	Then I get response with workspace content

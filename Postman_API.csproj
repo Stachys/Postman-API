@@ -142,11 +142,13 @@
     <Compile Include="Services\WebClientRequests.cs" />
     <Compile Include="Services\WorkspaceService.cs" />
     <Compile Include="Steps\CollectionSteps.cs" />
+    <Compile Include="Steps\EnvironmentSteps.cs" />
     <Compile Include="Steps\Hooks.cs" />
     <Compile Include="Steps\WorkspaceSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Features\Collections.feature" />
+    <None Include="Features\Environments.feature" />
     <None Include="Features\Workspaces.feature" />
     <None Include="packages.config" />
   </ItemGroup>
