@@ -23,6 +23,7 @@ namespace Postman_API.Steps
 
         [AfterScenario]
         [Scope(Feature = "Workspaces")]
+        [Scope(Tag = "Workspace")]
         public static void DeleteTestWorkspaces()
         {
             var getAllresponse = new WorkspaceService().GetAllWorkspaces();

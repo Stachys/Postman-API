@@ -23,6 +23,18 @@ namespace Postman_API.Services
             return Post<CollectionInfoModel>(Constants.baseUri + "/collections", serializedContend);
         }
 
+        public CollectionInfoModel CreateFork(CreateForkModel content, string collectionUid, string workspaceId)
+        {
+            var serializedContend = JsonConvert.SerializeObject(content);
+            return Post<CollectionInfoModel>(Constants.baseUri + $"/collections/fork/{collectionUid}/?workspace={workspaceId}", serializedContend);
+        }
+
+        public CollectionInfoModel MergeFork(MergeForkModel content)
+        {
+            var serializedContend = JsonConvert.SerializeObject(content);
+            return Post<CollectionInfoModel>(Constants.baseUri + "/collections/merge", serializedContend);
+        }
+
         public CollectionInfoModel UpdateCollection(CollectionContentModel content, string uid)
         {
             var serializedContend = JsonConvert.SerializeObject(content);

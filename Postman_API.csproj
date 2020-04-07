@@ -125,6 +125,8 @@
     <Compile Include="Models\Collections\CollectionInfo.cs" />
     <Compile Include="Models\Collections\CollectionListInfoModel.cs" />
     <Compile Include="Models\Collections\CollectionInfoModel.cs" />
+    <Compile Include="Models\Collections\CreateForkModel.cs" />
+    <Compile Include="Models\Collections\MergeForkModel.cs" />
     <Compile Include="Models\Environments\EnvironmentContentModel.cs" />
     <Compile Include="Models\Environments\EnvironmentInfo.cs" />
     <Compile Include="Models\Environments\EnvironmentInfoModel.cs" />

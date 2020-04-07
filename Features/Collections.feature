@@ -26,3 +26,18 @@ Scenario: 05 Response with collection content should be returned after GET reque
 	Given I have collection vsTest which contains Post request Single Test
 	When I send GET request to postman collections api with uid of this collection 
 	Then I get response with collection content
+
+@Workspace
+Scenario: 06 Fork should be created after POST request to postman collections api
+	Given I have collection with name vsTest
+	And I have workspace with name vsTest
+	When I create a fork vsTest of given collection in given workspase 
+	Then Created fork appears in postman
+
+@Workspace
+Scenario: 07 Fork should be merged after POST request to postman collections api
+	Given I have collection with name vsTest
+	And I have workspace with name vsTest
+	And I have a fork vsTest of given collection in given workspase 
+	When I merge this fork into collection
+	Then Fork was merged

@@ -13,6 +13,7 @@ namespace Postman_API.Steps
     [Binding, Scope(Feature = "Workspaces")]
     class WorkspaceSteps
     {
+        [Scope(Tag = "Workspace")]
         [Given(@"I have workspace with name (.*)")]
         [When(@"I send request to create (.*) workspace")]
         public void IHaveWorkspaceWithName(string workspaceName)
